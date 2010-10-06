@@ -1,8 +1,15 @@
 # you describe your data using the YAML notation here
 # and then load them using Fixtures.load("data.yml")
 #
-# User(Nick):
-#   email: nick.barnwell@gmail.com
-#   fullname: Nick Barnwell
-#   grade: 12
-#   
+User(Nick):
+   email: "nick.barnwell@gmail.com"
+   fullname: "Nick Barnwell"
+   grade: 12
+User(John):
+   email: "john.balout@yahoo.com"
+   fullname: "John Balout"
+   grade: 12
+Question(test):
+    question: "This is a sample Question to demonstrate some stuff to the Labyrinth staff"
+    submitter: Nick
+    respondent: John

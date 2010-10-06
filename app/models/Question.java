@@ -7,8 +7,9 @@ import play.db.jpa.*;
 
 @Entity
 public class Question extends Model{
-	
+	@Lob
 	public String question;
+	
 	public Date submittedAt;
 	
 	public int questionApproval;
