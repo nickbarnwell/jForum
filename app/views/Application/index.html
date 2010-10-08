@@ -1,4 +1,15 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set title:'Labyrinth jForum' /}
 
-#{welcome /}
+#{if latestQuestion}
+	<div class="question">
+		<span class="question-author">${latestQuestion.author.fullname}:</span>
+		<span class="question-content">${latestQuestion.content}</span>
+		%{
+			for(answer in latestQuestion.answers) {
+		}%
+			<li><span class="answer-author">${answer.author.fullname}</span>: <span class="answer-answer">${answer.content}</span></li>
+		%{
+			}
+		}%  
+#{/if}

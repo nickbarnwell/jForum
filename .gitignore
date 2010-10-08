@@ -1,3 +1,6 @@
 eclipse/*
 tmp/*
 .settings/*
+.classpath/*
+bin/*
+test-result/*

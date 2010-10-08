@@ -8,26 +8,32 @@ import play.db.jpa.*;
 @Entity
 public class Question extends Model{
 	@Lob
-	public String question;
+	public String content;
 	
 	public Date submittedAt;
 	
 	public int questionApproval;
 	
 	@ManyToOne
-	public User submitter;
-	@OneToOne
-	public User respondent;
+	public User author;
 	
-	public Question(String Question, User submitter, User respondent) {
-		this.question = question;
+	@OneToMany(mappedBy="question", cascade=CascadeType.ALL)
+	public List<Answer> answers;
+	
+	public Question(String content, User author) {
+		this.answers = new ArrayList<Answer>();
+		this.content = content;
 		this.submittedAt = new Date();
 		this.questionApproval = -1;
-		
-		this.submitter = submitter;
-		this.respondent = respondent;
-		
-		
+		this.author = author;
+	}
+	
+
+	public Question addAnswer(User author, String content) {
+		Answer newAnswer = new Answer(this, content, author).save();
+		this.answers.add(newAnswer);
+		this.save();
+		return this;
 	}
 	
 }

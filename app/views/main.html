@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <title>#{get 'title' /}</title>
@@ -7,10 +6,27 @@
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
+        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8">
+        </script>
         #{get 'moreScripts' /}
     </head>
     <body>
-        #{doLayout /}
+        <div id="header">
+        	<div id="logo">nb.</div>
+            <ul id="tools">
+                <li>
+                    <a href="#">Log in to write something</a>
+                </li>
+            </ul>
+            <div id="title">
+				<span class="about">About this blog</span>
+                <h1><a href="#">Labyrinth</a></h1>
+            </div>
+        </div>
+        <div id="main">
+            #{doLayout /}
+		</div>
+		<p id="footer">Test footer</p>
     </body>
+
 </html>
