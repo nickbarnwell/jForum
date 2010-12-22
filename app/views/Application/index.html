@@ -1,15 +1,3 @@
 #{extends 'main.html' /}
 #{set title:'Labyrinth jForum' /}
-
-#{if latestQuestion}
-	<div class="question">
-		<span class="question-author">${latestQuestion.author.fullname}:</span>
-		<span class="question-content">${latestQuestion.content}</span>
-		%{
-			for(answer in latestQuestion.answers) {
-		}%
-			<li><span class="answer-author">${answer.author.fullname}</span>: <span class="answer-answer">${answer.content}</span></li>
-		%{
-			}
-		}%  
-#{/if}
+<div style="width: 900px; margin-left: auto; margin-right: auto; text-align: center;" id="center"><h1><a style="text-decoration: none; color: red; padding: 20px; text-align: center; border: #ffffff solid;" href="/submit">submit a question</a></h1><br><h2><a style="text-decoration: none; color: red; padding: 15px; text-align: center; border: #ffffff solid;" href="/user">register for Forum</a></h1></div>

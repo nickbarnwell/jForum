@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>#{get 'title' /}</title>
+        <title>#{get 'title'}Labyrinth Forum #{/}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}" />	
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8">
+        <script src="@{'/public/javascripts/jquery-1.4.3.min.js'}" type="text/javascript" charset="utf-8"></script>
+				<script src="@{'/public/javascripts/jquery-ui-1.8.6.custom.min.js'}" type="text/javascript" charset="utf-8"></script>
         </script>
         #{get 'moreScripts' /}
     </head>
     <body>
         <div id="header">
-        	<div id="logo">nb.</div>
-            <ul id="tools">
-                <li>
-                    <a href="#">Log in to write something</a>
-                </li>
-            </ul>
+            *{<div id="logo">
+                nb.
+            </div>}*
             <div id="title">
-				<span class="about">About this blog</span>
-                <h1><a href="#">Labyrinth</a></h1>
+                <h1><a href="/">Labyrinth Forum</a></h1>
             </div>
         </div>
         <div id="main">
             #{doLayout /}
-		</div>
-		<p id="footer">Test footer</p>
+        </div>
+        <p id="footer">
+            have questions? email <a href="mailto:labyrinth@cis.dk">labyrinth@cis.dk</a> for help
+        </p>
     </body>
-
 </html>

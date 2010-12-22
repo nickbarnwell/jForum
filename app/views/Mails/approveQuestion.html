@@ -1,0 +1,17 @@
+<html>
+    <body>
+    
+        <p>${question.author.fullname},</p>
+		<p>
+		Before your question can be used in Forum you'll have to approve it by clicking the link below. If you didn't just submit a question,
+		please inform the <i>Labyrinth</i>  Staff at labyrinth@boltoncomputing.com so that we can take a look into it.<br>
+		</p>
+		
+		<p><a href="@@{Application.approve(question.approvalKey)}">Approval Link</a></p>
+		
+		<p>Sincerely,<br>
+		The <i>Labyrinth</i>  Staff</p>
+    
+    
+</html>
+

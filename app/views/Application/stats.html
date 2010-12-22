@@ -1,0 +1,4 @@
+#{extends 'main.html' /}
+#{list items:users, as:'user'}
+<li><a href="/submit?receiver=${user}">${user.fullname}</a></li>
+#{/list}

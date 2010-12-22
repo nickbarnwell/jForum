@@ -1,0 +1,70 @@
+*{ Display a question in one of these modes: 'full', 'home' or 'teaser' }*
+
+<div class="question ${_as == 'teaser' ? 'teaser' : ''}">
+    <h2 class="question-title">
+        <a href="#">Question from ${_question.author.fullname} to ${_question.receiver.fullname}</a>
+    </h2>
+    <div class="question-metadata">
+        <span class="question-user">by ${_question.author.fullname}</span>,
+        <span class="question-date">${_question.submittedAt.format('dd MMM yy')}</span>
+        #{if _as != 'full'}
+            <span class="question-answers">
+                &nbsp;|&nbsp; ${_question.answers.size() ?: 'no'} 
+                answer${_question.answers.size().pluralize()}
+                #{if _question.answers}
+                   , latest by ${_question.answers[0].author.fullname}
+                #{/if}
+            </span>
+        #{/if}
+    </div>
+    #{if _as != 'teaser'}
+        <div class="question-content">
+            <div class="about">Detail: </div>
+            ${_question.content.nl2br()}
+        </div>
+    #{/if}
+</div>
+ 
+#{if _as == 'full'}
+    <div class="answers">
+        <h3>
+            ${_question.answers.size() ?: 'no'} 
+            answer${_question.answers.size().pluralize()}
+        </h3>
+        
+        #{list items:_question.answers, as:'answer'}
+            <div class="comment">
+                <div class="comment-metadata">
+                    <span class="comment-user">by ${answer.author.fullname},</span>
+                    <span class="comment-date">
+                        ${answer.submittedAt.format('dd MMM yy')}
+                    </span>
+                </div>
+                <div class="comment-content">
+                	#{if answer.approval == 1}
+                    <div class="about">Detail: </div>
+                    ${answer.content.escape().nl2br()}
+					#{/if}
+					#{else}
+					<span class="error">This answer hasn't been approved by it's submitter yet, please check back later</span>
+					#{/else}
+                </div>
+            </div>
+        #{/list}
+        
+    </div>
+#{/if}
+<script type="text/javascript" charset="utf-8">
+    $(function() {         
+        // Expose the form 
+        $('form').click(function() { 
+            $('form').expose({api: true}).load(); 
+        }); 
+        
+        // If there is an error, focus to form
+        if($('form .error').size()) {
+            $('form').expose({api: true, loadSpeed: 0}).load(); 
+            $('form input').get(0).focus();
+        }
+    });
+</script>

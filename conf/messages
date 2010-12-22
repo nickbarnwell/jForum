@@ -1,3 +1,17 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+title=Title
+content=Content
+author=Author
+receiver=Receiver
+submittedAt= Submitted At
+fullname = Name
+isAdmin = User is Admin
+password = password
+approval = Question Approved (1 or 0)
+wordcount = Word Count
+approvalKey = Content MD5 Hash
+password = Password
+email = Email
+grade = Grade

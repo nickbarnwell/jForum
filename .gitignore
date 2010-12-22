@@ -1,6 +1,9 @@
-eclipse/*
-tmp/*
-.settings/*
-.classpath/*
-bin/*
-test-result/*
+.*
+# except for .gitignore
+!.gitignore
+
+# Ignore Play! working directory
+tmp
+log
+test-result
+eclipse

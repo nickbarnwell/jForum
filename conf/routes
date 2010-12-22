@@ -3,7 +3,22 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+*     /                     module:secure
+GET   /                     Application.index
+GET		/question/{id}		Application.question
+GET		/stats				Application.questionStats
+GET		/users				Application.getUsers
+GET		/submit				Application.submitForm
+GET		/user				Application.userForm
+
+
+POST	/submit				Application.submit
+POST	/user				Application.addUser
+GET		/approve/{key}		Application.approve
+
+GET     /admin/?            Admin.index
+*       /admin              module:crud
+
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public

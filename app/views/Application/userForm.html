@@ -1,0 +1,37 @@
+#{extends 'main.html' /}
+#{if flash.error}
+<p class="error">
+    ${flash.error}
+</p>
+#{/if}<h3>Add a user</h3>
+#{form @Application.addUser()}
+#{ifErrors}
+<p class="error">
+    All fields are required!
+</p>
+#{/ifErrors}
+<p>
+    <label for="fullname">
+        Your full name: 
+    </label>
+    <input type="text" name="fullname" id="fullname" value="${params.fullname}"/>
+</p>
+<p>
+    <label for="receiver">
+        Your email address: 
+    </label>
+    <input type="text" name="email" id="email" value="${params.email}"/>
+</p>
+<label for="grade">
+    Your grade:
+</label>
+<select id="grade" name="grade">
+    <option value="12">DP2</option>
+    <option value="11">DP1</option>
+    <option value="9">MYP5</option>
+    <option value="10">MYP4</option>
+	<option value="22">Staff</option>
+</select>
+<p>
+    <input type="submit" value="Join Labyrinth" />
+</p>#{/form}
