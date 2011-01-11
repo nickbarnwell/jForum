@@ -8,6 +8,7 @@
 html, body {
     background: #fff  !important;
     font-family: Helvetica, Arial, Sans !important;
+	color: #fff;
 }
 
 body {
@@ -21,6 +22,12 @@ body {
 #header {
     padding: 0px 0;
     position: relative;
+}
+    
+#center {
+	width: 900px;
+    margin: auto;
+    color: #fff;
 }
 
 #logo {
@@ -47,10 +54,14 @@ body {
     right: 0;
     top: 30px;
     right: 20px;
-}
+	}
 
 #tools a {
-    color: #fff;
+    color: #000;
+	border: solid;
+	-moz-border-radius: 3px;
+	padding: 3px;
+	border-radius: 3px;
     text-decoration: none;
 }
 #title {
@@ -59,7 +70,7 @@ body {
     margin: 20px 0;
     color: #f01c1c;
     position: relative;
-    -webkit-border-radius: 16px;
+    border-radius: 16px;
     -moz-border-radius: 16px;
 }
 
@@ -101,7 +112,7 @@ body {
 #main {
     background: #000;
     -moz-border-radius: 16px 5px 16px 5px;
-		-webkit-border-radius: 16px 5px 16px 5px;
+	border-radius: 16px 5px 16px 5px;
 		
     padding: 10px 20px 20px 20px;
 }
@@ -139,7 +150,7 @@ body {
     background: #fff;
     padding: 10px;
     margin: 10px 0 50px 0;
-    -webkit-border-radius: 10px;
+    border-radius: 10px;
     -moz-border-radius: 10px;
     
 }
@@ -241,7 +252,7 @@ h3 span {
     margin-bottom: 10px;
     margin-left: 100px;
     padding: 10px;
-    -webkit-border-radius: 10px;
+    border-radius: 10px;
     -moz-border-radius: 10px;
 }
 
@@ -264,8 +275,7 @@ h3 span {
 form {
     padding: 10px;
     background: #413839;
-    
-    -webkit-border-radius: 10px;
+    border-radius: 10px;
     -moz-border-radius: 10px;
 }
 
@@ -274,7 +284,7 @@ form .error {
     color: #fff;
     font-size: 90%;
     padding: 3px 5px;
-    -webkit-border-radius: 6px;
+    border-radius: 6px;
     -moz-border-radius: 6px;
     -webkit-box-shadow: 0 2px 0 #800;
 }
@@ -309,7 +319,7 @@ form label {
     background: #67AD10;
     color: #fff;
     padding: 10px;
-    -webkit-border-radius: 6px;
+    border-radius: 6px;
     -moz-border-radius: 6px;
     -webkit-box-shadow: 0 2px 0 #4E840B; 
 }
@@ -390,7 +400,7 @@ form label {
     font-size: 80%;
     background: #591C64;
     padding: 2px 10px;
-    -webkit-border-radius: 9px;
+    border-radius: 9px;
     -moz-border-radius: 9px;
 }
 
@@ -462,13 +472,13 @@ tr.odd {
 
 .crudFlash {
     border: 0;
-    -webkit-border-radius: 8px;
+    border-radius: 8px;
     font-size: 80%;
     padding: 2px 10px;
 }
 
 .crudField .tag.selected {
-    -webkit-border-radius: 8px;
+    border-radius: 8px;
     -moz-border-radius: 8px;
 }
 
@@ -485,7 +495,7 @@ tr.odd {
 #login form {
     background: #8B98AD !important;
     border: 0 !important;
-    -webkit-border-radius: 16px;
+    border-radius: 16px;
     -moz-border-radius: 16px;
 }
 
@@ -523,7 +533,7 @@ tr.odd {
 
 #newPost a {
     background: #C88116;
-    -webkit-border-radius: 12px;
+    border-radius: 12px;
     -moz-border-radius: 12px;
     padding: 5px 10px;
     font-size: 80%;
@@ -535,7 +545,7 @@ tr.odd {
 
 #newPost a span {
     background: #7D510E;
-    -webkit-border-radius: 8px;
+    border-radius: 8px;
     -moz-border-radius: 8px;
     padding: 0 5px 2px 5px;
     position: relative;
@@ -559,7 +569,7 @@ tr.odd {
 .question-content
 {
 	font-style:italic;
-	font-size:1em;
+	color: #000;
 }
 
 .answer-author
@@ -582,7 +592,7 @@ tr.odd {
     color: #fff;
     font-size: 90%;
     padding: 3px 5px;
-    -webkit-border-radius: 6px;
+    border-radius: 6px;
     -moz-border-radius: 6px;
     -webkit-box-shadow: 0 2px 0 #800;
 }

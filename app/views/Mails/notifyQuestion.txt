@@ -1,0 +1,18 @@
+${question.author.fullname},
+
+Before your question can be used in Forum you'll have to approve it by 
+clicking the link below. If you didn't just submit a question, please 
+inform the Labyrinth  Staff at labyrinth@boltoncomputing.com so that 
+we can take a look into it.
+
+The question's text and recipient appear below
+			
+	To: ${question.receiver}
+	
+	${question.content}
+
+If this question is one you've submitted and would like to see appear in Labyrinth,
+click this link @@{Application.approve(question.approvalKey)}
+
+Sincerely,
+The Labyrinth Staff

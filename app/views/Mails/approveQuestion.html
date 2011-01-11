@@ -1,17 +1,17 @@
 <html>
     <body>
-    
         <p>${question.author.fullname},</p>
 		<p>
 		Before your question can be used in Forum you'll have to approve it by clicking the link below. If you didn't just submit a question,
-		please inform the <i>Labyrinth</i>  Staff at labyrinth@boltoncomputing.com so that we can take a look into it.<br>
+		please inform the <i>Labyrinth</i>  Staff at labyrinth@boltoncomputing.com so that we can take a look into it.
 		</p>
+					
+		<p style="display:block !important; padding:10px 20px; text-align:justify; font-family:Georgia, Times, serif;">${question.content}</p>
 		
-		<p><a href="@@{Application.approve(question.approvalKey)}">Approval Link</a></p>
+		<p>If this question is one you've submitted and would like to see appear in <i>Labyrinth</i>,
+		click this <a href="@@{Application.approve(question.approvalKey)}">Approval Link</a></p>
 		
 		<p>Sincerely,<br>
 		The <i>Labyrinth</i>  Staff</p>
-    
-    
 </html>
 
