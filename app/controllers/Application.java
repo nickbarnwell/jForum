@@ -10,11 +10,15 @@ import notifiers.*;
 
 public class Application extends Controller {
     
+	public static void questionEmail(Long id) {
+        Question question = Question.findById(id);
+        render(question);
+	}
+	
     public static void getUsers(String term) {
-        System.out.println(term);
-        term += "%";
+        //System.out.println(term); //For debugging terms
+        term += "%"; //For SQL statement like
         List<User> users = User.find("byFullnameLike", term).fetch();
-//        System.out.println(users);
         List<String> userList = new ArrayList<String>(users.size());
         for(User u : users) {
             userList.add(u.fullname);
@@ -22,9 +26,16 @@ public class Application extends Controller {
         renderJSON(userList);
     }
     
+    public static void listUsers() {
+    	
+    }
+    
     public static void index() {
-        Question latestQuestion = Question.find("order by submittedAt desc").first();
-        render(latestQuestion);
+        render();
+    }
+    
+    public static void spage(String page) {
+    	render("static/"+page+".html");
     }
 
     public static void question(Long id) {
@@ -83,9 +94,9 @@ public class Application extends Controller {
     }
 
     public static void submit(
-            @Required(message = "Your name should be here. P.S: We know if you're lying") String author,
-            @Required(message = "You need to enter someone's name!") String receiver,
-            @Required(message = "You didn't think we'd let you get away without a question, did you?") String content) {
+            @Required(message = "Your name should be here.") String author,
+            @Required(message = "You need to enter a recipient's name!") String receiver,
+            @Required(message = "A question is required") String content) {
         if (validation.hasErrors()) {
             render("Application/submitForm.html");
         }
@@ -104,9 +115,7 @@ public class Application extends Controller {
         } catch (Exception e) {
             flash.error("An error occurred, please try again");
             submitForm();
-        }
-        // System.out.println("Submitter: " + uAuthor.fullname + " Receiver: " +
-        // uReceiver.fullname);        
+        }        
     }
     
     public static void submitForm() {

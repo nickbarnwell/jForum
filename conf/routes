@@ -10,6 +10,7 @@ GET		/stats				Application.questionStats
 GET		/users				Application.getUsers
 GET		/submit				Application.submitForm
 GET		/user				Application.userForm
+GET		/*{page}.html		Application.spage
 
 
 POST	/submit				Application.submit
