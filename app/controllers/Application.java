@@ -16,7 +16,12 @@ public class Application extends Controller {
 	}
 	
     public static void getUsers(String term) {
-        //System.out.println(term); //For debugging terms
+//        if play.mode == "ibevaluation" {
+//        		User[] usersList = new User[30];
+//        		
+//        		users = User.find
+//        }
+    	//System.out.println(term); //For debugging terms
         term += "%"; //For SQL statement like
         List<User> users = User.find("byFullnameLike", term).fetch();
         List<String> userList = new ArrayList<String>(users.size());
