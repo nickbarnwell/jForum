@@ -35,7 +35,7 @@ public class Question extends Model{
 		this.approval = -1;
 		this.author = author;
 		this.receiver = receiver;
-		this.wordcount = content.split("[\\s^\\*]+").length;
+		this.wordCount();
 		this.generateKey();	
 	}
 	
@@ -60,6 +60,8 @@ public class Question extends Model{
 	        System.out.println("Generation of key failed");
 	    }
 	}
+	
+
 	
 	public Answer addAnswer(User author, String content) {
 		Answer newAnswer = new Answer(this, content, author).save();
