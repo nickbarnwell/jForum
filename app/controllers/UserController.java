@@ -25,7 +25,7 @@ public class UserController extends Controller{
 	}
 
 	public static void userlist() {
-		List<User> users = User.find().fetch(); //Fetch all users
+		List<User> users = User.all().fetch(); //Fetch all users
 		render();
 	}
 	

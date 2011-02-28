@@ -20,10 +20,10 @@ public class Application extends Controller {
 
 	public static void questionStats() {
 		Map<User, Integer> results = new HashMap<User, Integer>();
-		List<User> users = User.find().fetch(); //Fetch all users
+		List<User> users = User.all().fetch(); //Fetch all users
 		for (User u : users) {
 			results.get(u);
-			List<Question> questions = Question.findBy("byAuthor", u);
+			List<Question> questions = Question.find("byAuthor", u).fetch();
 			for (Question q : questions) {
 				Integer count = results.get(u);
 				results.put(u, (count == null) ? q.wordcount : count

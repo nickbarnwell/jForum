@@ -61,7 +61,7 @@ public class BTree<Node extends Comparable<? super Node>> {
 		return entry;
 	}
 
-	private Entry<Node> find(Node val, Entry<Node> entry) {
+	public Entry<Node> find(Node val, Entry<Node> entry) {
 		while (entry != null) {
 			if (val.compareTo(entry.element) < 0)
 				entry = entry.left;
