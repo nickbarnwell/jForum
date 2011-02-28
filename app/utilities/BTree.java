@@ -82,7 +82,7 @@ public class BTree<Node extends Comparable<? super Node>> {
 	private void getInOrderTraversal(Entry<Node> entry) {
 		if (entry != null) {
 			getInOrderTraversal(entry.right);
-			System.out.println(entry);
+			
 			sort.add(entry.getNode());
 			getInOrderTraversal(entry.left);
 		}
