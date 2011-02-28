@@ -33,4 +33,11 @@ public class User extends Model {
 	public static User connect(String email, String password) {
 	    return find("byEmailAndPassword", email, password).first();
 	}
+
+	public int compareTo(Object that) {
+		if(that instanceof User) {
+			throw new IllegalArgumentException();
+		}
+		return 0;
+	}
 }

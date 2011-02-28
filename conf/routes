@@ -3,21 +3,25 @@
 # ~~~~
 
 # Home page
-*     /                     module:secure
-GET   /                     Application.index
+*     /                     module:secure 
+
+# App Controller Routes
+GET   	/                   Static.index
 GET		/question/{id}		Application.question
 GET		/stats				Application.questionStats
-GET		/users				Application.getUsers
 GET		/submit				Application.submitForm
-GET		/user				Application.userForm
 
-
-
-POST	/submit				Application.submit
-POST	/user				Application.addUser
 GET		/approve/{key}		Application.approve
+POST	/submit				Application.submit
 
+# User Controller Routes
+GET		/users				UserController.getUsers
+GET		/user				UserController.userForm
+POST	/user				UserController.addUser
+
+#Admin Controller routes
 GET     /admin/?            Admin.index
+GET		/admin/export		Admin.exportQuestions
 *       /admin              module:crud
 
 
@@ -27,4 +31,4 @@ GET     /public/                                staticDir:public
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
 #Static Page Catchall
-GET		/*{page}			Application.spage
+GET		/*{page}			Static.{page}

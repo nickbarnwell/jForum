@@ -36,7 +36,7 @@ public class Question extends Model{
 		this.author = author;
 		this.receiver = receiver;
 		this.wordCount();
-		this.generateKey();	
+		this.checkKey();	
 	}
 	
 	public String toString() {
@@ -47,12 +47,12 @@ public class Question extends Model{
 	    this.wordcount = this.content.split("[\\s^\\*]+").length; //Regex to match
     }
 	
-	public void approve(String approvalKey) {
+	public void checkKey(String approvalKey) {
 	    this.approval = (approvalKey == this.approvalKey) ? 1 : 0;	    
 	    this.save();
 	}
 	
-	private void generateKey() {
+	private void checkKey() {
 	    try {
 	        this.approvalKey = ("q" + MD5.genMD5(this.content));
 	        }

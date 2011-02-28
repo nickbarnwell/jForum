@@ -36,8 +36,14 @@ public class ApplicationTests extends UnitTest {
 
         Question question = (Question) nickPosts.get(0);
 //        question.generateKey();
-        question.approve(question.approvalKey);
+        question.checkKey(question.approvalKey);
+        
         assertEquals(1, question.approval);
+    }
+    
+    @Test
+    public void answerQuestion() {
+    	
     }
 
 }

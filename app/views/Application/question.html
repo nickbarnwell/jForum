@@ -1,8 +1,8 @@
 #{extends 'main.html' /}
-#{if question.approval == 1}
 #{if flash.success}
     <p class="success">${flash.success}</p>
 #{/if}
+#{if question.approval == 1}
 #{question question:question, as:'full' /}
 #{if !flash.success }
 <h3>Answer the question!</h3>
@@ -22,6 +22,6 @@
 #{/form}
 #{/if}
 #{/if}
-#{else}
-<p class="error">This question hasn't been approved by its submitter yet, check back later!</p>
+#{else (!flash.success && question.approval == 0)}
+<p class="error">This question hasn't been approved by its submitter yet. If you've just submitted a question, check your email to find the approval link</p>
 #{/else}

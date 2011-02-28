@@ -30,4 +30,16 @@ public class Mails extends Mailer{
         addRecipient(answer.author.email);
         send(answer);   
     }
+    
+    public static void notifyRegistration(User user) {
+    	setFrom("Nick Barnwell <nick.barnwell@gmail.com>");
+        setReplyTo("nick.barnwell@gmail.com");
+        
+        List<User> admins = User.find("isAdmin is true").fetch();
+        System.out.println("Is this thing on?");
+		for(User u:admins) { System.out.println(u.fullname); addRecipient(u.email);}
+		setSubject("A new user has registered for forum (Hallaleujah)!");
+        send(user);
+        
+    }
 }

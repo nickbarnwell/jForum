@@ -1,3 +1,5 @@
+import java.util.List;
+
 import play.*;
 import play.jobs.*;
 import play.test.*;
@@ -8,9 +10,9 @@ import models.*;
 public class Bootstrap extends Job {
 
     public void doJob() {
-        // Fixtures.deleteAll();
-        if (User.count() == 0) {
-            Fixtures.load("initial-data.yml");
-        }
-    }
+    	System.out.print(User.find("isAdmin is True").fetch().size());
+    	if(User.find("isAdmin is True").fetch().size()==0) {
+    		Fixtures.load("admin.yml");;
+    	}
+    } 
 }

@@ -1,36 +1,5 @@
-User(Nick):
-   email: nick.barnwell@gmail.com
-   fullname: Nick Barnwell
-   grade: 12
-   
-User(John):
-   email: john.balout@yahoo.com
-   fullname: John Balout
-   grade: 12
-
-User(Sarstedt):
-   email: danielsarstedt@cis.dk
-   fullname: Daniel Sarstedt
-   grade: 22
-   
-Question(test):
-    content: This is a sample Question to demonstrate some stuff to the Labyrinth staff. What's your favorite bit about it?
-    author: Nick
-    receiver: John
-    submittedAt: 2010-10-10
-    questionApproval: 1
-
-Question(test2):
-    content: This is a sample Question to demonstrate some stuff to the Labyrinth staff. What's your favorite bit about it?
-    author: Nick
-    receiver: John
-    submittedAt: 2010-10-10
-    questionApproval: 1    
-
-Answer(testanswerbreak):
-    submittedAt: 2010-10-10
-    question: test
-    author: Nick
-    answerApproval: 1
-    content: Wow Nick, this will break!
-    
+User(Admin):
+   email: administrator@laby.dk
+   fullname: Administrator
+   grade: 13
+   password: l@by

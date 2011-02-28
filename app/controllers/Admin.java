@@ -6,7 +6,8 @@ import play.mvc.*;
 import java.util.*;
  
 import models.*;
- 
+import models.Question;
+
 @With(Secure.class)
 public class Admin extends Controller {
     
@@ -20,6 +21,15 @@ public class Admin extends Controller {
  
     public static void index() {
         render();
+    }
+    
+    public static void exportQuestions() {
+    	List<Question> q = (List<Question>) Question.all();
+    	Question[] questions = new Question[q.size()];
+    	for(int i = 0; i < q.size(); i++) {
+    		questions[i] = q.get(i);
+    	}
+    	render(questions);
     }
     
 }
