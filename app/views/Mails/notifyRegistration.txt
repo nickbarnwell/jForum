@@ -1,0 +1,4 @@
+${user.fullname} has just registered.
+
+They are in ${user.grade}
+EMail Address: ${user.email}

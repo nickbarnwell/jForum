@@ -1,0 +1,10 @@
+#{list questions: _question, as:'answer'
+<div class="answers">
+    <h3>${_question.answers.size() ?: 'no'} 
+        answer${_question.answers.size().pluralize()}</h3>
+    #{list items:_question.answers, as:'answer'}
+            <span class="comment-user">by ${answer.author.fullname},</span>
+            <span class="comment-date">${answer.submittedAt.format('dd MMM yy')}</span>
+
+    #{/list}
+</div>
