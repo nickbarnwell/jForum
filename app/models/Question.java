@@ -20,6 +20,8 @@ public class Question extends Model{
 	public String approvalKey;
 	public Integer wordcount;
 	
+	public Boolean mailed;
+	
 	@ManyToOne
 	public User author;
 	@ManyToOne
@@ -60,8 +62,6 @@ public class Question extends Model{
 	        System.out.println("Generation of key failed");
 	    }
 	}
-	
-
 	
 	public Answer addAnswer(User author, String content) {
 		Answer newAnswer = new Answer(this, content, author).save();

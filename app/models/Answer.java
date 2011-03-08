@@ -23,6 +23,8 @@ public class Answer extends Model {
 
     @Required
     public int approval;
+    
+    public Boolean mailed;
 
     @ManyToOne
     public Question question;
