@@ -22,7 +22,8 @@
 </p>
 #{/ifErrors}
 <div class="ui-widget">
-
+<p>View the full list of participants <a href="@{Application.questionStats()}">here</a> and click their name to select them as a recipient
+</p>
 <p>
     <label for="author">
         Your full name: 
@@ -48,12 +49,12 @@
 <script>
     $(function(){
         $( "#author" ).autocomplete({
-            minLength: 1,
+            minLength: 0,
             source: "@{UserController.getUsers()}",
 						delay: 0,            
         });
         $( "#receiver" ).autocomplete({
-            minLength: 1,
+            minLength: 0,
 						source: "@{UserController.getUsers()}",
         });
     });
