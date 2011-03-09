@@ -4,7 +4,7 @@
     ${flash.error}
 </p>
 #{/if}<h3>Add a user</h3>
-#{form @Application.addUser()}
+#{form @UserController.addUser()}
 #{ifErrors}
 <p class="error">
     All fields are required!
