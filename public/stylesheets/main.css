@@ -17,7 +17,9 @@ body {
     margin: auto;
 }
 
-/** Blog header **/
+a {
+	color: red;
+}
 
 #header {
     padding: 0px 0;
