@@ -22,6 +22,9 @@ POST	/user				UserController.addUser
 #Admin Controller routes
 GET     /admin/?            Admin.index
 GET		/admin/export		Admin.exportQuestions
+GET		/admin/import		Admin.submitCSV
+POST	/admin/import		Admin.importCSV
+GET		/admin/confirm		Admin.confirmCSV
 *       /admin              module:crud
 
 

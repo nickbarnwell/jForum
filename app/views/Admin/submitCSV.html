@@ -1,0 +1,16 @@
+#{extends 'admin.html' /}
+#{if flash.error}
+<p class="error">
+    ${flash.error}
+</p>
+#{/if}<h3>Import a CSV with user data</h3>
+#{ifErrors}
+<p class="error">
+    All fields are required!
+</p>
+#{/ifErrors}
+
+<form action="@{Admin.importCSV()}" method="POST" enctype="multipart/form-data">
+    <input type="file" id="file" name="file" />
+    <input type="submit" value="Import" />
+</form>

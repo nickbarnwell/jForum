@@ -2,11 +2,13 @@ package controllers;
 
 import play.*;
 import play.mvc.*;
+import play.mvc.results.RenderTemplate;
+import utilities.CSV;
  
+import java.io.File;
 import java.util.*;
  
 import models.*;
-import models.Question;
 
 @With(Secure.class)
 public class Admin extends Controller {
@@ -31,5 +33,30 @@ public class Admin extends Controller {
     	}
     	render(questions);
     }
+	
+	public static void submitCSV() {
+		render();
+	}
+	
+	public static void importCSV(File file) {
+		CSV csv = new CSV(file, true, ",");
+		ArrayList<ArrayList<String>> data = csv.getData();
+		ArrayList<String> header = csv.getHeader();
+		for(ArrayList<String> row:data) {
+			if(User.find("byEmail", row.get(3)).first() == null) {
+				User u = new User(row.get(3), row.get(0)+" "+row.get(1), Integer.parseInt(row.get(2).replaceAll("\\D+", ""))).save();
+			}
+			
+		}
+		flash.success("Users successfully created");
+		render(data, header);
+	}
+	
+//	public static void importCSV(String title, File file) {
+//		CSV csv = new CSV(file, true, ",");
+//		//csv.print();
+//		ArrayList<ArrayList<String>> data = csv.getData(); 
+//		renderTemplate("admin/confirmCSV.html", data);
+//	}
     
 }

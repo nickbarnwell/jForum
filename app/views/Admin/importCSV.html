@@ -1,0 +1,40 @@
+#{extends 'admin.html' /}
+#{if flash.success}
+    <p class="success">${flash.success}</p>
+#{/if}
+<table style="border=1px;">
+	%{
+	if(header != null) {
+	}%
+	<tr>
+	%{
+		for(String h:header) {
+	}%
+		<th>${h}</th>
+	%{
+		}
+	}%
+	<th>Add to Forum?</th>
+	</tr>
+	%{
+	}
+	}%
+	%{ 
+	
+	for(ArrayList<String> row:data) {
+	}%
+	<tr>
+		%{
+			for(String cell:row) {
+				
+		}%
+			<td>${cell}</td>
+		%{	
+		}
+		}%
+	</tr>
+	%{
+		}
+	}%
+	</table>
+
