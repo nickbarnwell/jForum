@@ -4,6 +4,7 @@
 #{/if}
 #{if question.approval == 1}
 #{question question:question, as:'full' /}
+#{if !question.answers.size() == 0}
 #{if !flash.success }
 <h3>Answer the question!</h3>
 #{form @Application.answerQuestion(question.id)}
@@ -20,6 +21,7 @@
         <input type="submit" value="Submit your answer" />
     </p>
 #{/form}
+#{/if}
 #{/if}
 #{/if}
 #{else (!flash.success && question.approval == 0)}

@@ -1,0 +1,14 @@
+<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/export.css'}" />
+<div id="questions">
+    #{list items:q, as:'question' }
+    <div class="question">
+        <span class='author'>${question.author}</span> to <span class='submitter'>${question.receiver}</span>
+        <div class='content'>${question}</div>
+        <div class="answer">
+            #{list items:question.answers, as:'answer' }
+            ${answer.content}
+            #{/list}
+        </div>
+    </div>
+    #{/list}
+</div>

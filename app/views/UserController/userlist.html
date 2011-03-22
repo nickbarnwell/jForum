@@ -1,6 +1,6 @@
 #{extends 'main.html' /}
-<ul>
+<dl>
     #{list items:users, as:'user' }
         <li><a href=@{Application.submitForm(receiver=user.id)}>${user.fullname}</a></li>
     #{/list}
-</ul>
+</dl>
