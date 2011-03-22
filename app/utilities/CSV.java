@@ -2,35 +2,39 @@ package utilities;
 
 import java.io.*;
 import java.util.*;
-
+/**
+ * This is a basic implementation of a CSV parser using 2D arrays and loops.
+ * @author Nick Barnwell
+ * @mastery Parsing a text file or other data stream
+ * @mastery Encapsulation
+ * @mastery Arrays of 2 or more dimensions
+ */
 public class CSV {
-
-	ArrayList<ArrayList<Cell>> data = new ArrayList<ArrayList<Cell>>();
+	ArrayList<ArrayList<Cell>> data = new ArrayList<ArrayList<Cell>>(); //Creates a 
 	ArrayList<String> head = new ArrayList<String>();
 	private Boolean header;
 
 	private static class Cell<Type extends Comparable<? super Type>> {
 		Type content;
-
+		
 		Cell(Type cont) {
 			content = cont;
 		}
-
 		public Type getContent() {
-			return this.content;
+			return content;
 		}
 
 		public String toString() {
-			return this.content.toString();
+			return content.toString();
 		}
 	}
 
 	public Boolean hasHeader() {
-		return this.header;
+		return header;
 	}
 	
 	public ArrayList<String> getHeader() {
-		return this.head;
+		return head;
 	}
 
 

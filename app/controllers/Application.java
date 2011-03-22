@@ -12,6 +12,13 @@ import models.*;
 import notifiers.*;
 import utilities.*;
 
+/**
+ * This controller holds all of the methods and functions associated
+ * with the main functions of the application, including submitting
+ * and answering questions, and generating the statistics pages.
+ * @author Nick Barnwell
+ *
+ */
 
 public class Application extends Controller {
 	/**
@@ -41,8 +48,9 @@ public class Application extends Controller {
 	 * and returned as an ArrayList collection to be rendered
 	 * by the template Application/stats.html
 	 
+	 @param id The id of the question to be displayed
 	 */
-	public static void questionStats() {
+	public static void questionStats(String setSelf, String setRecipient) {
 		HashMap<User, Integer> results = new HashMap<User, Integer>();
 		List<User> users = User.all().fetch(); //Fetch all users
 		for (User u : users) {
@@ -97,8 +105,7 @@ public class Application extends Controller {
 					question.approval = 1;
 					question.save();
 					flash.success("Your question has been approved");
-					// Mails.notifyQuestion(question); To be reenabled at a
-					// alter date
+					Mails.notifyQuestion(question);
 					question(question.id);
 				} else {
 					question(question.id);
@@ -140,7 +147,7 @@ public class Application extends Controller {
 	 * causes a Flash error to display and the form to be rerendered, as 
 	 * if a validation had failed. 
 	 * <p>
-	 * Otherwise, it will create a new question with the  
+	 * Otherwise, it will create a new question with the specified parameters  
 	 * 
 	 @param author The name of the author as specified in the "Author" field on the form
 	 @param receiver The name of the user to receive the question as specified in the "receiver" field on the form
@@ -168,8 +175,8 @@ public class Application extends Controller {
 	}
 	/**
 	 * This method is called when a POST is made on an approved question
-	 * @param questionID
-	 * @param content
+	 * @param questionID ID of question the answer is attached to
+	 * @param content The body of the answer
 	 */
 	public static void answerQuestion(Long questionID, String content) {
 		Question question = Question.findById(questionID);

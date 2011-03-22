@@ -8,3 +8,4 @@ log
 test-result
 eclipse
 app/*.conf
+bin/
