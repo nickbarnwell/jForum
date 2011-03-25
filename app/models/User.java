@@ -1,4 +1,15 @@
 package models;
+
+/**
+ * This class is the model definition for the User object used throughout the
+ * jForum application to keep track of who's who.
+ *
+ * Public fields have setters and getters generated at compile time, and
+ * are set in dynamic style of Object.fieldName = newValue throughout
+ * the app. This is changed to use Object.setFieldName(newValue) at compile
+ * time
+ */
+
 import java.util.*;
 import play.data.validation.*;
 import javax.persistence.*;
@@ -8,7 +19,7 @@ import play.db.jpa.*;
 @Entity
 public class User extends Model {
 	@Required
-	@Email
+	@Email //Performs validation before saving
 	public String email;
 	
 	public String password;
@@ -29,15 +40,33 @@ public class User extends Model {
 	public String toString() {
 	    return this.fullname;
 	}
-	
+	/**
+	 * Used by Security controller to authenticate a user.
+	 * @param email
+	 * @param password
+	 * @return
+	 */
 	public static User connect(String email, String password) {
 	    return find("byEmailAndPassword", email, password).first();
 	}
-
-	public int compareTo(Object that) {
+	/**
+	 * Used for determining which is a larger value as opposed to
+	 * implementing the Comparable interface due to Java's lack of 
+	 * multiple inheritance (can't extend AND implement)
+	 * 
+	 * @param that The other object
+	 * @return
+	 */
+	public int compareTo(Object that) throws ClassCastException {
 		if(that instanceof User) {
-			throw new IllegalArgumentException();
+			User other = (User) that;
+			if(other.id == this.id) {
+				return 0;
+			}
+			return (other.id < this.id) ? 1:-1; 
 		}
-		return 0;
+		else {
+			throw new ClassCastException();
+		}
 	}
 }
