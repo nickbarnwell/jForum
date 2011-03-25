@@ -1,34 +1,47 @@
 package utilities;
+/**
+ * Acts as tuple for usage in the binary tree. Comparator implemented 
+ * on second item in the pair
+ * 
+ * @author Nick Barnwell
+ *
+ * @param <F> The type of the first element
+ * @param <S> The type of the second element
+ */
 
 public class Pair<F, S extends Comparable<? super S>>
 		implements Comparable<Pair<? extends F, ? extends S>> {
 
-	private final F first;
+	private final F first; //Elements are non-mutable once created
 	private final S second;
 
 	public Pair(F ft, S sd) {
-		this.first = ft;
-		this.second = sd;
+		first = ft;
+		second = sd;
 	}
 
 	public int compareTo(Pair<? extends F, ? extends S> that) {
-		//int comparator = compare(first, that.first);
 		int comparator = 0;
+		//Ternary operator to to check the comparator and return proper value
 		return comparator == 0 ? compare(second, that.second) : comparator;
 	}
 
-	private static <T extends Comparable<? super T>> int compare(T l, T r) {
-		if (l == null) {
-			return r == null ? 0 : -1;
+	private static <T extends Comparable<? super T>> int compare(T left, T right) {
+		if (left == null) {
+			return right == null ? 0 : -1;
 		} else {
-			return r == null ? 1 : l.compareTo(r);
+			return right == null ? 1 : left.compareTo(right);
 		}
 	}
-
+	/**
+	 * @return First item
+	 */
 	public F getFirst() {
 		return first;
 	}
-	
+	/**
+	 * @return Second item
+	 */
 	public S getSecond() {
 		return second;
 	}

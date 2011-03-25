@@ -10,8 +10,8 @@ import java.util.*;
  * @mastery Arrays of 2 or more dimensions
  */
 public class CSV {
-	ArrayList<ArrayList<Cell>> data = new ArrayList<ArrayList<Cell>>(); //Creates a 
-	ArrayList<String> head = new ArrayList<String>();
+	private ArrayList<ArrayList<Cell>> data = new ArrayList<ArrayList<Cell>>(); //Creates an array of arrays to hold the cell data 
+	private ArrayList<String> head = new ArrayList<String>(); //Keep track of header
 	private Boolean header;
 
 	private static class Cell<Type extends Comparable<? super Type>> {
@@ -93,7 +93,9 @@ public class CSV {
 			System.err.println("Error: " + e.getMessage());
 		}
 	}
-
+	/**
+	 * Use 2D Arrays to Print CSV for debugging purposes
+	 */
 	public void print() {
 		int counter = 0;
 		String[][] cont = this.getArray();
