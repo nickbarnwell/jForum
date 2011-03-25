@@ -195,8 +195,15 @@ public class Application extends Controller {
 	 * @param content
 	 *            The body of the answer
 	 */
-	public static void answerQuestion(Long questionID, String content) {
+	public static void answerQuestion(
+			@Required(message = "You need a questionID") Long questionID,
+			@Required(message = "You need a proper answer!") String content) {
 		Question question = Question.findById(questionID);
+		if (validation.hasErrors()) {
+			params.flash(); // add http parameters to the flash scope
+			validation.keep(); // keep the errors for the next request
+			question(questionID);
+		}
 		Answer answer = question.addAnswer(question.receiver, content);
 		Mails.approveAnswer(answer);
 		question(questionID);
