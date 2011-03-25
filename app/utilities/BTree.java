@@ -101,7 +101,7 @@ public class BTree<Node extends Comparable<? super Node>> {
 		else if (value.compareTo(entry.element) > 0)
 			entry.right = insert(value, entry.right); //Otherwise insert to right
 		else
-			entry.left = insert(value, entry.left); //Unless it is equal, and then insert it to the left. THis trades runtime efficiency for allowing duplicate entries
+			entry.left = insert(value, entry.left); //Unless it is equal, and then insert it to the left. Allows duplicates
 			//throw new RuntimeException("Duplicate Entry : " + value.toString());
 		size += 1;
 		return entry;

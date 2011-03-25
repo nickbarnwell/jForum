@@ -1,6 +1,21 @@
 #{extends 'admin.html' /}
-<div style="width: 900px; margin-left: auto; margin-right: auto; text-align: center;" id="center">
-    <h1><a style="text-decoration: none; color: red; padding: 20px; text-align: center; border: #ffffff solid;" href="@{Admin.submitCSV()}">Import new users</a></h1>
+<style type="text/css">
+    .link {
+        text-decoration: none;
+        color: red;
+        padding: 20px;
+        text-align: center;
+        border: #ffffff solid;
+    }
+    #center {
+        width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        }        
+</style>
+<div id="center">
+    <h1><a class="" href="@{Admin.submitCSV()}">Import new users</a></h1>
 	<br>
 	<h1><a style="text-decoration: none; color: red; padding: 20px; text-align: center; border: #ffffff solid;" href="@{Admin.exportQuestions()}">Export Questions</a></h1>
 </div>
