@@ -8,13 +8,18 @@ package models;
  * are set in dynamic style of Object.fieldName = newValue throughout
  * the app. This is changed to use Object.setFieldName(newValue) at compile
  * time
+ * 
+ * @mastery Aspect #7: Inheritance
  */
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import javax.persistence.*;
 
 import play.data.validation.*;
 import play.db.jpa.*;
+import models.Question;
 
 import utilities.MD5;
 
@@ -51,13 +56,19 @@ public class Answer extends Model {
     }
     /**
      * As in the Question model, generates the MD5 hash for the answer
+     * @throws Exception 
+     * @throws NoSuchAlgorithmException 
      */
     private void generateKey() {
         try {
             this.approvalKey = "a" + MD5.genMD5(this.content);
 
         } catch (Exception e) {
-            System.out.println("Generation of key failed");
+        	if(e instanceof play.exceptions.DatabaseException) {
+            System.out.println("Generation of key failed due to transient DB failure. Requeued");}
+        	else {
+        		System.out.println(e);
+        	}
         }
     }
     public String toString() {

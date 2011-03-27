@@ -21,6 +21,8 @@ import utilities.MD5;
  * play.db.jpa.Model class, which holds all of the annotations, methods for
  * searching, and so on. For the most part, the only ones that are overridden
  * are toString() and compareTo().
+ * 
+ * @mastery Aspect #7: Inheritance
  */
 public class Question extends Model{
 	@Required //Can't be created without a content String set

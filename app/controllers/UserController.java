@@ -32,13 +32,15 @@ public class UserController extends Controller{
 	 * 
 	 * 
 	 * @param term The name of the user
-	 * @mastery Searching for specified data
+	 * @mastery Aspect #3 Searching for Specified Data in a File
 	 */
 	public static void getUsers(String term) {
-		term += "%"; // For SQL statement like
+		term += "%"; // For SQL statement like creation to avoid injection
+		//The find creates a JPAQuery object, which is then exectued by Fetch
 		List<User> users = User.find("byFullnameLike", term).fetch();
-		List<String> userList = new ArrayList<String>(users.size());
-		for (User u : users) {
+		//Creates string list for renderJSON method. Size preset for efficiency
+		List<String> userList = new ArrayList<String>(users.size()); 
+		for (User u : users) { //Foreach user in users adds users to userList
 			userList.add(u.fullname);
 		}
 		if(userList.size() <= 0) userList.add("No user found by that name");
@@ -73,11 +75,13 @@ public class UserController extends Controller{
 	public static void addUser(@Required String fullname,
 			@Required String email, @Required String grade) {
 		if (validation.hasErrors()) {
-			render("Application/userForm.html");
+				params.flash(); // add http parameters to the flash scope
+				validation.keep(); // keep the errors for the next request
+				userForm();
 		}
 		try {
-			if (User.find("byEmail", email).first() != null) {
-				System.out.println(User.find("byEmail", email).first());
+			if (User.find("byEmail", email).first() != null || 
+					User.find("byFullname", fullname).first() != null) {
 				flash.error("That user has already been registered, please try again");
 				userForm();
 			} else {

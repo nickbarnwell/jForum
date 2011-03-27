@@ -8,6 +8,8 @@ package models;
  * are set in dynamic style of Object.fieldName = newValue throughout
  * the app. This is changed to use Object.setFieldName(newValue) at compile
  * time
+ * 
+ * @mastery Aspect #7: Inheritance
  */
 
 import java.util.*;

@@ -66,6 +66,7 @@ public class Application extends Controller {
 						+ q.wordcount); // Ternary operator to avoid NPEs
 			}
 		}
+		//@mastery Aspect #10: Hierarchical Composite Data Structure
 		BTree<Pair<User, Integer>> tree = new BTree();
 		for (User u : users) {
 			Pair<User, Integer> pair = new Pair(u, results.get(u));

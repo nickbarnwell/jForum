@@ -26,12 +26,14 @@ public class BTree<Node extends Comparable<? super Node>> {
 	 * @author Nick Barnwell
 	 *
 	 * @param <Node>
+	 * 
+	 * @mastery Aspect #8: Encapsulation
 	 */
 	private static class Entry<Node extends Comparable<? super Node>> {
 		Node element;
 		Entry<Node> left;
 		Entry<Node> right;
-
+		
 		Entry(Node elem) {
 			element = elem;
 			left = right = null;
@@ -42,6 +44,12 @@ public class BTree<Node extends Comparable<? super Node>> {
 		 */
 		public Node getNode() {
 			return this.element;
+		}
+		public Entry<Node> getLeft() {
+			return this.left;
+		}
+		public Entry<Node>getRight() {
+			return this.right;
 		}
 	}
 	/**
@@ -111,9 +119,15 @@ public class BTree<Node extends Comparable<? super Node>> {
 	 * 
 	 * @param val
 	 * @param entry
-	 * @return
+	 * @return Node
+	 * 
+	 * @mastery Aspect #6: Polymorphism
 	 */
-	public Entry<Node> find(Node val, Entry<Node> entry) {
+	public Node find(Node val) {
+		return find(val, root).getNode();
+	}
+	
+	private Entry<Node> find(Node val, Entry<Node> entry) {
 		while (entry != null) {
 			if (val.compareTo(entry.element) < 0)
 				entry = entry.left;
@@ -126,7 +140,7 @@ public class BTree<Node extends Comparable<? super Node>> {
 	}
 	/**
 	 * @return An ArrayList of type node of the list sorted in order.
-	 * @mastery Recursion
+	 * @mastery Aspect #4: Recursion
 	 */
 	public ArrayList<Node> sortInOrder() {
 		sort.clear();
@@ -136,9 +150,9 @@ public class BTree<Node extends Comparable<? super Node>> {
 
 	private void getInOrderTraversal(Entry<Node> entry) {
 		if (entry != null) { //While referenced node isn't null, recursively call getInOrderTraversal
-			getInOrderTraversal(entry.right); //First add right tree
+			getInOrderTraversal(entry.right); //First add right tree by calling self on node
 			sort.add(entry.getNode()); //Add entry to node
-			getInOrderTraversal(entry.left); //Move to left
+			getInOrderTraversal(entry.left); //Move to left by calling self on node
 		}
 	}
 }

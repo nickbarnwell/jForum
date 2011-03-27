@@ -6,7 +6,7 @@ import java.util.*;
  * This is a basic implementation of a CSV parser using 2D arrays and loops.
  * @author Nick Barnwell
  * @mastery Parsing a text file or other data stream
- * @mastery Encapsulation
+ * @mastery Aspect #8: Encapsulation
  * @mastery Arrays of 2 or more dimensions
  */
 public class CSV {
@@ -49,7 +49,12 @@ public class CSV {
 		}
 		return dat;
 	}
-
+	/**
+	 * Returns CSV as an array of strings. Useful for JSOn serialization
+	 * @return String[][] array
+	 * 
+	 * @mastery Aspect #19: Arrays of 2 or more dimension
+	 */
 	public String[][] getArray() {
 		String[][] array = new String[data.size()][head.size()];
 		int counter = 0;
@@ -59,26 +64,33 @@ public class CSV {
 			}
 			counter++;
 		}
-
 		return array;
-
 	}
-
+	/**
+	 * Constructor for the CSV 
+	 * @param csv CSV POSTed as multipart file.
+	 * @param header Whether or not a header exists
+	 * @param seperator The seperator used for the CSV parser
+	 * 
+	 * @mastery Aspect #9: Parsing a text file or other data stream
+	 */
 	public CSV(File csv, Boolean header, String seperator) {
 		this.header = header;
-
+		
 		try {
+			//Open input streams
 			FileInputStream fstream = new FileInputStream(csv);
-
 			DataInputStream in = new DataInputStream(fstream);
 			BufferedReader br = new BufferedReader(new InputStreamReader(in));
-			String strLine;
-			if (header) {
-				String[] headers = br.readLine().split(seperator);
+			String strLine; //Initalize string for each line
+			if (header) { //Parse header
+				//Split into string array on seperator
+				String[] headers = br.readLine().split(seperator); 
 				for (String h : headers) {
-					head.add(h);
+					head.add(h); //Foreach string in array add to arraylist
 				}
 			}
+			//While lines left in file, loop and add row to array of rows
 			while ((strLine = br.readLine()) != null) {
 				String[] line = strLine.split(seperator);
 				ArrayList<Cell> row = new ArrayList<Cell>();
@@ -88,20 +100,23 @@ public class CSV {
 				}
 				data.add(row);
 			}
-			in.close();
+			in.close();//Close file. Discards it from temp
 		} catch (IOException e) {// Catch exception if any
 			System.err.println("Error: " + e.getMessage());
 		}
 	}
 	/**
 	 * Use 2D Arrays to Print CSV for debugging purposes
+	 * 
+	 * @mastery Aspect 19
 	 */
 	public void print() {
 		int counter = 0;
 		String[][] cont = this.getArray();
-		for (int c = 0; c < cont.length; c++) {
-			for (int cc = 0; cc < cont[c].length; cc++) {
-				System.out.print(cont[c][cc]);
+		//Loop through rows and columns, print
+		for (int row= 0; row < cont.length; row++) {
+			for (int column = 0; column < cont[row].length; column++) {
+				System.out.print(cont[row][column]);
 			}
 			System.out.println();
 			counter++;
