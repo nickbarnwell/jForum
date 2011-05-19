@@ -18,6 +18,10 @@
 			<input type="submit" value="&{'crud.delete', type.modelName}" />
 		</p>
 	#{/form}
+	<h2>Tasks</h2>
+	<ul>
+		<li><a href='@{Questions.regenKey(object.id)}'>Regenerate Approval Hash</a></li>
+	</ul>
 	<h2>Related Answers</h2>
 	<ul>
 	#{list items:object.answers, as:'answer'}

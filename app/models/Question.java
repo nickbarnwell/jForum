@@ -60,7 +60,7 @@ public class Question extends Model{
 		this.author = author;
 		this.receiver = receiver;
 		this.wordCount();
-		this.checkKey();	
+		this.generateKey();	
 	}
 	
 	public String toString() {
@@ -87,9 +87,9 @@ public class Question extends Model{
 	/**
 	 * Private method used to generate the key; function polymorphism
 	 */
-	private void checkKey() {
+	public void generateKey() {
 	    try {
-	        this.approvalKey = ("q" + MD5.genMD5(this.content));
+	        this.approvalKey = ("q" + MD5.genMD5(this.content+" "+this.submittedAt.toString()));
 	        }
 	    catch (Exception e) {
 	        System.out.println("Generation of key failed");

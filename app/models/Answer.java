@@ -59,9 +59,9 @@ public class Answer extends Model {
      * @throws Exception 
      * @throws NoSuchAlgorithmException 
      */
-    private void generateKey() {
+    public void generateKey() {
         try {
-            this.approvalKey = "a" + MD5.genMD5(this.content);
+            this.approvalKey = "a" + MD5.genMD5(this.content+" "+this.submittedAt.toString());
 
         } catch (Exception e) {
         	if(e instanceof play.exceptions.DatabaseException) {
